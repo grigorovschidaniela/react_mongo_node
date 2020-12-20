@@ -6,7 +6,7 @@ const hapi = require('hapi');
 const init = async () => {
 	
     const server = hapi.server({    
-        port: 3000,    
+        port: 8080,    
         host: 'localhost'
     });
 	
@@ -17,10 +17,10 @@ const init = async () => {
 
 	server.route({
 		method: 'GET',
-		path: '/',
+		path: '/api',
 		handler: (request, h) => {
             if(db.readyState == 1){
-                return 'Connected!';
+                return {'name':'Connected!'};
             }else if(db.readyState == 2){
                 return 'Connecting!';
             }else if(db.readyState == 0){
